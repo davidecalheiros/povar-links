@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Davide Calheiros | Povar</title>
+<meta name="description" content="Parceiro de IA para PME, na Póvoa de Varzim. Sessões, recursos gratuitos e conversa de 30 minutos.">
+<meta name="theme-color" content="#0A0A0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Davide Calheiros | Povar">
+<meta property="og:description" content="A IA do seu negócio, com alguém a tomar conta dela.">
+<meta property="og:image" content="https://davidecalheiros.github.io/povar-links/davide.jpg">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="monroe-bold.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Monroe"; src: url("monroe-bold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Monroe"; src: url("monroe-light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+
+:root {
+  --bg: #0A0A0E;
+  --surface: #131318;
+  --surface-2: #1C1C28;
+  --line: rgba(255, 255, 255, 0.10);
+  --line-soft: rgba(255, 255, 255, 0.07);
+  --line-pill: rgba(255, 255, 255, 0.18);
+  --line-glow: rgba(157, 127, 245, 0.60);
+  --aura: rgba(157, 127, 245, 0.14);
+  --ink: #E8E6F0;
+  --body: #A09CB8;
+  --v-500: #9D7FF5;
+  --v-600: #7C3AED;
+  --v-200: #DDD6FE;
+  --r-lg: 9px;
+  --r-pill: 20px;
+  --title: "Monroe", "Inter", system-ui, sans-serif;
+  --text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 300 16px/1.65 var(--text); overflow-x: clip; -webkit-tap-highlight-color: transparent; }
+::selection { background: var(--v-600); color: #fff; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--v-500); outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--title); font-weight: 600; letter-spacing: -0.025em; }
+
+.wrap { width: min(100% - 32px, 1040px); margin-inline: auto; }
+
+/* Efeitos partilhados: borda que acende, luz que segue o cursor ou o dedo, anel, toque */
+.glow { border: 1px solid var(--rest, var(--line)); transition: transform .35s var(--ease), border-color .35s ease; }
+.glow.is-lit { border-color: var(--line-glow); transform: translateY(-3px); }
+@media (hover: hover) and (pointer: fine) {
+  .glow:hover { border-color: var(--line-glow); transform: translateY(-4px); }
+}
+.glow:active { transform: translateY(-1px) scale(.992); }
+
+.aura { position: fixed; left: 0; top: 0; z-index: 40; width: 340px; height: 340px; margin: -170px 0 0 -170px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, var(--aura) 0%, transparent 70%); opacity: 0; transition: opacity .3s ease; will-change: transform; }
+.aura.is-on { opacity: 1; }
+
+.ripple { position: fixed; z-index: 50; width: 14px; height: 14px; margin: -7px 0 0 -7px; border: 1.5px solid var(--v-500); border-radius: 50%; pointer-events: none; animation: ripple .56s var(--ease) forwards; }
+@keyframes ripple { from { transform: scale(.25); opacity: .9; } to { transform: scale(4.5); opacity: 0; } }
+
+.ring { position: relative; border-radius: 50%; padding: 2px; background: conic-gradient(from var(--ang), var(--line) 0deg, var(--line) 220deg, var(--v-500) 300deg, var(--v-200) 330deg, var(--line) 360deg); animation: orbit 9s linear infinite; }
+@keyframes orbit { to { --ang: 360deg; } }
+.ring img { border-radius: 50%; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 3px solid var(--bg); }
+
+/* Topo */
+.top { position: sticky; top: 0; z-index: 30; background: var(--bg); border-bottom: 1px solid var(--line-soft); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 500; font-size: 15px; }
+.brand img { height: 32px; width: auto; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 10px 22px; border-radius: var(--r-pill); font: 500 15px/1.2 var(--text); background: transparent; color: var(--ink); cursor: pointer; }
+.btn-main { background: var(--v-600); border-color: var(--v-600); color: #fff; }
+.btn-main.is-lit { border-color: var(--v-200); }
+@media (hover: hover) and (pointer: fine) { .btn-main:hover { border-color: var(--v-200); } }
+.top .btn { min-height: 44px; padding: 8px 16px; font-size: 14px; --rest: var(--line-pill); }
+
+/* Hero */
+.hero { padding: 32px 0 64px; display: grid; gap: 24px; }
+.who { width: 128px; }
+.eyebrow { font: 500 12px/1.3 var(--text); letter-spacing: .10em; text-transform: uppercase; color: var(--body); }
+.eyebrow b { font-weight: 500; color: var(--v-500); }
+.hero .eyebrow { display: flex; align-items: center; gap: 10px; }
+.sep { display: none; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--v-500); flex: none; }
+h1 { font-size: clamp(38px, 9.4vw, 64px); line-height: 1.04; margin: 18px 0 20px; max-width: 13.5em; }
+.lead { max-width: 58ch; color: var(--body); font-size: 17px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.cta .btn:not(.btn-main) { --rest: var(--line-pill); }
+.social { display: flex; align-items: center; gap: 8px; margin-top: 28px; }
+.social span { margin-right: 8px; }
+.ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; --rest: var(--line-pill); }
+.ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Secções */
+.sec { padding: 64px 0; border-top: 1px solid var(--line-soft); }
+.sec h2 { font-size: clamp(30px, 6.6vw, 44px); line-height: 1.1; margin: 14px 0 28px; }
+
+/* Destaques */
+.feat { display: grid; gap: 12px; }
+.card { display: flex; flex-direction: column; background: var(--surface); border-radius: var(--r-lg); padding: 24px; min-height: 280px; }
+.card .eyebrow { margin-bottom: 18px; }
+.big { font: 600 clamp(56px, 16vw, 92px)/1 var(--title); letter-spacing: -0.03em; margin-bottom: 18px; }
+.card h3 { font-size: 24px; line-height: 1.2; margin-bottom: 10px; }
+.card p { color: var(--body); max-width: 46ch; }
+.go { margin-top: auto; padding-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-weight: 500; font-size: 15px; color: var(--v-500); }
+.go i { font-style: normal; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line-pill); border-radius: 50%; color: var(--ink); font-size: 18px; flex: none; }
+
+/* Lista de links */
+.rows { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; background: var(--surface); border-radius: var(--r-lg); padding: 18px 20px; min-height: 76px; }
+.row strong { display: block; font-weight: 500; font-size: 16px; line-height: 1.35; }
+.row small { display: block; font-size: 14px; line-height: 1.45; color: var(--body); margin-top: 3px; }
+.row i { font-style: normal; color: var(--body); font-size: 18px; }
+
+/* Sobre */
+.about { display: grid; gap: 32px; }
+.about > div > p { color: var(--body); max-width: 60ch; margin-bottom: 14px; }
+.lead + .lead { margin-top: 12px; }
+.nums h3 { font-size: 24px; line-height: 1.2; margin-bottom: 8px; }
+.nums dl { margin: 0 0 18px; }
+.nums dl > div { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.nums dt { font-weight: 500; }
+.nums dd { margin: 2px 0 0; color: var(--body); font-size: 15px; line-height: 1.5; }
+.nums > p { color: var(--ink); }
+.steps { list-style: none; margin: 40px 0 0; padding: 0; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.steps li:last-child { border-bottom: 0; }
+.steps span { font-size: 12px; font-weight: 500; letter-spacing: .1em; color: var(--v-500); padding-top: 4px; }
+.steps strong { font-weight: 500; }
+.steps small { display: block; color: var(--body); font-size: 14px; line-height: 1.45; }
+
+/* Contacto */
+.talk { background: var(--surface); border-radius: var(--r-lg); padding: 44px 24px; }
+.talk h2 { margin-bottom: 14px; }
+.talk p { color: var(--body); max-width: 52ch; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 20px; }
+.mail a { color: var(--v-500); min-height: 44px; display: inline-flex; align-items: center; }
+.copy { min-height: 44px; padding: 0 12px; background: none; border: 0; color: var(--body); font: 400 14px var(--text); cursor: pointer; }
+
+.foot { padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line-soft); color: var(--body); font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
+.foot a { display: inline-flex; align-items: center; min-height: 44px; }
+
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 60; transform: translate(-50%, 12px); padding: 10px 16px; border-radius: var(--r-pill); background: var(--surface-2); border: 1px solid var(--line-pill); font-size: 14px; font-weight: 400; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .35s var(--ease); }
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Entradas (só com JS activo) */
+.js [data-in] { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease), transform .6s var(--ease), border-color .35s ease; }
+.js [data-in].is-in { opacity: 1; transform: none; }
+.js .glow[data-in].is-in { transition: transform .35s var(--ease), border-color .35s ease, opacity .8s var(--ease); }
+
+@media (min-width: 760px) {
+  .hero { grid-template-columns: 1fr 300px; align-items: center; padding: 96px 0 110px; }
+  .who { width: 100%; grid-column: 2; grid-row: 1; }
+  .sep { display: inline; }
+  br.m { display: none; }
+  .feat { grid-template-columns: 3fr 2fr; }
+  .card { padding: 30px; min-height: 340px; }
+  .rows { grid-template-columns: repeat(3, 1fr); }
+  .sec { padding: 96px 0; }
+  .about { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; }
+  .steps li { grid-template-columns: 1fr; align-content: start; border-bottom: 0; padding: 16px 0 0; border-top: 1px solid var(--line-soft); }
+  .talk { padding: 64px 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ring { animation: none; }
+  .ripple { display: none; }
+  .glow, .glow:active, .glow.is-lit { transition: border-color .2s ease; transform: none !important; }
+  .js [data-in] { opacity: 1; transform: none; transition: none; }
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="aura" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://povar.pt" target="_blank" rel="noopener"><img src="logo-white.svg" alt="Povar" width="29" height="32"></a>
+    <a class="btn glow" href="https://cal.com/povar.pt/30min" target="_blank" rel="noopener">Marcar conversa ↗</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="who" data-in>
+      <div class="ring"><img src="davide.jpg" alt="Davide Calheiros" width="720" height="720"></div>
+    </div>
+    <div>
+      <p class="eyebrow" data-in><span class="dot"></span><span>Davide Calheiros<span class="sep"> · </span><br class="m">Parceiro de IA para PME</span></p>
+      <h1 data-in>Abriu um negócio. Acabou a fazer tudo.</h1>
+      <p class="lead" data-in>Responder a clientes, fazer orçamentos, tratar de faturas, publicar nas redes. Quando é tudo consigo, a noite acaba por ser o único horário que sobra.</p>
+      <p class="lead" data-in>Sou o Davide, parceiro de IA de quem gere um negócio. Vemos juntos o que pode deixar de passar por si, pomos isso a funcionar e fico por perto depois.</p>
+      <div class="cta" data-in>
+        <a class="btn btn-main glow" href="https://cal.com/povar.pt/30min" target="_blank" rel="noopener">Contar-me como é a sua semana ↗</a>
+        <a class="btn glow" href="#destaque">Ver sessões e recursos ↓</a>
+      </div>
+      <div class="social" data-in>
+        <span class="eyebrow">Seguir</span>
+        <a class="ico glow" href="https://www.instagram.com/davidecalheiros.povar/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+        <a class="ico glow" href="https://www.linkedin.com/in/davidecalheiros/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.2v.1M12 17v-6.5M12 13.5c0-1.8 1.2-3 2.6-3 1.5 0 2.4 1 2.4 3V17"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="destaque">
+    <p class="eyebrow" data-in><b>01</b> / Em destaque</p>
+    <h2 data-in>Para começar sem falar comigo</h2>
+    <div class="feat">
+      <!-- data-ate: o cartão desaparece sozinho depois desta data -->
+      <a class="card glow" data-in data-ate="2026-11-09" href="https://davidecalheiros.github.io/povar-registo/?e=aepvz-restauracao" target="_blank" rel="noopener">
+        <p class="eyebrow">Sessão online gratuita · 16h00</p>
+        <div class="big" aria-label="9 de novembro">9 nov</div>
+        <h3>IA na restauração em 30 minutos</h3>
+        <p>Com a AEPVZ: exemplos simples do que a inteligência artificial já faz no dia a dia de um café ou restaurante.</p>
+        <span class="go">Inscrever-me <i aria-hidden="true">↗</i></span>
+      </a>
+      <a class="card glow" data-in href="https://davidecalheiros.github.io/povar-manual/qr" target="_blank" rel="noopener">
+        <p class="eyebrow">Manual gratuito</p>
+        <h3>Apresentações web animadas com o Claude</h3>
+        <p>Indique o nome e o email e o PDF abre de seguida.</p>
+        <span class="go">Receber o manual <i aria-hidden="true">↗</i></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="links">
+    <p class="eyebrow" data-in><b>02</b> / Links</p>
+    <h2 data-in>Onde me encontrar</h2>
+    <div class="rows">
+      <a class="row glow" data-in href="https://povar.pt" target="_blank" rel="noopener"><span><strong>Site da Povar</strong><small>O que fazemos e como trabalhamos.</small></span><i aria-hidden="true">↗</i></a>
+      <a class="row glow" data-in href="https://www.linkedin.com/in/davidecalheiros/" target="_blank" rel="noopener"><span><strong>LinkedIn</strong><small>Onde escrevo sobre IA no dia a dia das empresas.</small></span><i aria-hidden="true">↗</i></a>
+      <a class="row glow" data-in href="https://cal.com/povar.pt/30min" target="_blank" rel="noopener"><span><strong>Conversa de 30 minutos</strong><small>Gratuita, para perceber por onde faz sentido começar.</small></span><i aria-hidden="true">↗</i></a>
+    </div>
+  </section>
+
+  <section class="sec" id="sobre">
+    <div class="about">
+      <div>
+        <p class="eyebrow" data-in><b>03</b> / O que faz um parceiro de IA</p>
+        <h2 data-in>A IA do seu negócio, com alguém a tomar conta dela.</h2>
+        <p data-in>É como ter alguém de IA na equipa, pelo tempo que fizer falta. Olho para o seu dia a dia, digo o que vale a pena e o que não vale, pomos a funcionar e continuo disponível quando alguma coisa muda.</p>
+        <p data-in>Sou da Póvoa de Varzim, dou formação a empresas e entidades de vários setores e sou n8n Ambassador oficial em Portugal.</p>
+      </div>
+      <div class="nums" data-in>
+        <h3>Os três números que importam</h3>
+        <dl>
+          <div><dt>Horas</dt><dd>Quantas vão, por semana, para tarefas que não precisavam de passar por si.</dd></div>
+          <div><dt>Clientes</dt><dd>Quantos pedidos ficam sem resposta ou recebem o orçamento tarde demais.</dd></div>
+          <div><dt>Lucro</dt><dd>Quanto sobra ao fim do mês, depois de pagar tudo, incluindo as ferramentas que ninguém usa.</dd></div>
+        </dl>
+        <p>Medimos os três com os seus dados antes de falar em ferramentas. Se nenhum puder mudar o suficiente, digo-lhe isso e não avançamos.</p>
+      </div>
+    </div>
+    <ol class="steps" data-in>
+      <li><span>01</span><div><strong>Ouvir</strong><small>30 minutos para me contar como é a sua semana. Gratuito.</small></div></li>
+      <li><span>02</span><div><strong>Medir</strong><small>Fazemos as contas ao que cada tarefa lhe custa, com os seus números. Diagnóstico pago, abatido se avançar.</small></div></li>
+      <li><span>03</span><div><strong>Resolver</strong><small>Pomos a primeira solução a funcionar e ensino a usá-la.</small></div></li>
+      <li><span>04</span><div><strong>Acompanhar</strong><small>Todos os meses, vemos o que correu bem, o que falhou e o que vem a seguir.</small></div></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="contacto">
+    <div class="talk glow" data-in>
+      <p class="eyebrow"><b>04</b> / Contacto</p>
+      <h2>Que tarefa queria nunca mais ter de fazer?</h2>
+      <p>Conte-me numa conversa de 30 minutos. Se a IA não for a resposta, digo-lhe isso mesmo.</p>
+      <div class="cta"><a class="btn btn-main glow" href="https://cal.com/povar.pt/30min" target="_blank" rel="noopener">Marcar conversa ↗</a></div>
+      <div class="mail"><a href="mailto:hello@povar.pt">hello@povar.pt</a><button class="copy" type="button" data-copy="hello@povar.pt">Copiar</button></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap"><span>© 2026 Povar · Póvoa de Varzim</span><a href="mailto:hello@povar.pt">hello@povar.pt</a></div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var hoje = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('[data-ate]').forEach(function (el) {
+    if (el.getAttribute('data-ate') < hoje) el.remove();
+  });
+
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cursor = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var aura = document.querySelector('.aura');
+
+  function moverAura(x, y) { aura.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)'; }
+
+  // Entradas
+  var entradas = document.querySelectorAll('[data-in]');
+  if (calmo || !('IntersectionObserver' in window)) {
+    entradas.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    // O primeiro ecrã entra logo, sem esperar pelo observador
+    document.body.offsetWidth;
+    document.querySelectorAll('.hero [data-in]').forEach(function (el) { el.classList.add('is-in'); });
+    var ioIn = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); ioIn.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    entradas.forEach(function (el) { ioIn.observe(el); });
+  }
+
+  if (cursor && !calmo) {
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      moverAura(e.clientX, e.clientY);
+      aura.classList.add('is-on');
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', function () { aura.classList.remove('is-on'); });
+  }
+
+  // Toque: o cartão sob o dedo acende, a luz acompanha o dedo e, ao fazer scroll, acende o cartão ao centro
+  if (!cursor) {
+    var aceso = null;
+    function acender(el) {
+      if (aceso === el) return;
+      if (aceso) aceso.classList.remove('is-lit');
+      aceso = el;
+      if (aceso) aceso.classList.add('is-lit');
+    }
+    document.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      if (!calmo) { moverAura(t.clientX, t.clientY); aura.classList.add('is-on'); }
+      var alvo = e.target.closest ? e.target.closest('.glow') : null;
+      if (alvo) acender(alvo);
+    }, { passive: true });
+    document.addEventListener('touchmove', function (e) {
+      if (!calmo) moverAura(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    ['touchend', 'touchcancel'].forEach(function (n) {
+      document.addEventListener(n, function () { aura.classList.remove('is-on'); }, { passive: true });
+    });
+    if ('IntersectionObserver' in window) {
+      var ioCentro = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) acender(e.target);
+          else if (aceso === e.target) acender(null);
+        });
+      }, { rootMargin: '-46% 0px -46% 0px' });
+      document.querySelectorAll('.card, .row').forEach(function (el) { ioCentro.observe(el); });
+    }
+  }
+
+  // Onda no clique ou toque
+  if (!calmo) {
+    document.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      var r = document.createElement('span');
+      r.className = 'ripple';
+      r.style.left = e.clientX + 'px';
+      r.style.top = e.clientY + 'px';
+      r.addEventListener('animationend', function () { r.remove(); });
+      document.body.appendChild(r);
+    }, { passive: true });
+  }
+
+  // Copiar email
+  var toast = document.querySelector('.toast'), tempo;
+  function avisar(txt) {
+    toast.textContent = txt;
+    toast.classList.add('is-on');
+    clearTimeout(tempo);
+    tempo = setTimeout(function () { toast.classList.remove('is-on'); }, 2200);
+  }
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-copy');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(v).then(function () { avisar('Email copiado'); }, function () { avisar(v); });
+      } else { avisar(v); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
